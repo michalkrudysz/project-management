@@ -1,0 +1,37 @@
+.sidebar {
+  width: 20em;
+  padding: 1.5em;
+  margin-top: 2em;
+  background-color: #736049;
+  border-radius: 5px;
+  font-family: "Fredoka", sans-serif;
+  font-weight: normal;
+  color: #f2ede9;
+  text-transform: uppercase;
+  -webkit-box-shadow: 1px 0px 16px -9px rgba(64, 51, 40, 1);
+  -moz-box-shadow: 1px 0px 16px -9px rgba(64, 51, 40, 1);
+  box-shadow: 1px 0px 16px -9px rgba(64, 51, 40, 1);
+
+  .title {
+    font-size: 1.5em;
+    letter-spacing: 1px;
+  }
+
+  button {
+    padding: 0.6em 0.7em;
+    margin-top: 0.2em;
+    background: #d9c7a7;
+    color: #736049;
+    border: none;
+    border-radius: 5px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    transition: background 0.6s ease, color 0.6s ease;
+
+    &:hover {
+      background: #a68b6a;
+      color: #f2ede9;
+    }
+  }
+}

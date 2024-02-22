@@ -1,0 +1,54 @@
+.new-project {
+  margin-top: 5em;
+  font-family: "Fredoka", sans-serif;
+
+  li {
+    list-style-type: none;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+
+    button {
+      font: inherit;
+      font-weight: 600;
+      width: 6em;
+      padding: 0.6em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: inherit;
+      transition: background-color 0.6s ease, 0.2s ease-in-out;
+
+      &.cancle {
+        color: #403328;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      &.save {
+        background-color: #736049;
+        color: #f2ede9;
+        border-radius: 3px;
+
+        &:hover {
+          background-color: darken(#736049, 10%);
+        }
+      }
+    }
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    width: 40em;
+  }
+}

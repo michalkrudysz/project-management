@@ -1,3 +1,5 @@
+@import "fonts.scss";
+
 *,
 *::before,
 *::after {
@@ -48,6 +50,7 @@ ul,
 ol {
   list-style: none;
 }
+
 img {
   max-width: 100%;
   height: auto;
@@ -62,4 +65,7 @@ select {
 
 *:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
   box-sizing: border-box;
+}
+#root {
+  height: 100%;
 }
