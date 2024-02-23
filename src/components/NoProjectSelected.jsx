@@ -2,7 +2,7 @@ import noProjectImage from "../assets/create-project.png";
 import Button from "./Button";
 import classes from "./NoProjectSelected.module.scss";
 
-export default function NoProjectSelected() {
+export default function NoProjectSelected({ onStartAddProject }) {
   return (
     <div className={classes["no-project-selected"]}>
       <img
@@ -13,7 +13,7 @@ export default function NoProjectSelected() {
       <h2 className={classes.title}>Żaden projekt nie został zaznaczony</h2>
       <p>Wybierz projekt albo zacznij nowy</p>
       <p className={classes.paragraph}>
-        <Button>Stwórz nowy projekt</Button>
+        <Button onClick={onStartAddProject}>Stwórz nowy projekt</Button>
       </p>
     </div>
   );
