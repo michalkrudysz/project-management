@@ -3,7 +3,7 @@ import Input from "./Input.jsx";
 import Modal from "./Modal.jsx";
 import classes from "./NewProject.module.scss";
 
-export default function NewProject({ onAdd }) {
+export default function NewProject({ onAdd, onCancel }) {
   const modal = useRef();
 
   const title = useRef();
@@ -43,7 +43,9 @@ export default function NewProject({ onAdd }) {
       <div className={classes["new-project"]}>
         <menu className={classes.menu}>
           <li>
-            <button className={classes.cancel}>Anuluj</button>
+            <button className={classes.cancel} onClick={onCancel}>
+              Anuluj
+            </button>
           </li>
           <li>
             <button className={classes.save} onClick={handleSave}>
