@@ -1,14 +1,20 @@
 import classes from "./ProjectSidebar.module.scss";
 import Button from "./Button.jsx";
 
-export default function ProjectSidebar({ onStartAddProject }) {
+export default function ProjectSidebar({ onStartAddProject, project }) {
   return (
     <aside className={classes.sidebar}>
       <h2 className={classes.title}>Twoje projekty</h2>
-      <div>
+      <div className={classes["add-project"]}>
         <Button onClick={onStartAddProject}>Dodaj projekt</Button>
       </div>
-      <ul></ul>
+      <ul>
+        {project.map((project) => (
+          <li key={project.id}>
+            <button className={classes.button}>{project.title}</button>
+          </li>
+        ))}
+      </ul>
     </aside>
   );
 }

@@ -18,16 +18,35 @@ function App() {
       };
     });
   }
+
+  function handleAddProject(projectData) {
+    const newProject = {
+      ...projectData,
+      id: Math.random(),
+    };
+
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: undefined,
+        project: [...prevState.project, newProject],
+      };
+    });
+  }
+
   let content;
   if (projectState.selectedProjectId === null) {
-    content = <NewProject />;
+    content = <NewProject onAdd={handleAddProject} />;
   } else if (projectState.selectedProjectId === undefined) {
     content = <NoProjectSelected onStartAddProject={handleStartedAddProject} />;
   }
 
   return (
     <main className="main">
-      <ProjectSidebar onStartAddProject={handleStartedAddProject} />
+      <ProjectSidebar
+        onStartAddProject={handleStartedAddProject}
+        project={projectState.project}
+      />
       {content}
     </main>
   );

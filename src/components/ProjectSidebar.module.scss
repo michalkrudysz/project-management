@@ -2,11 +2,11 @@
   width: 20em;
   padding: 1.5em;
   margin-top: 2em;
-  background-color: #736049;
   border-radius: 5px;
+  background-color: #736049;
+  color: #f2ede9;
   font-family: "Fredoka", sans-serif;
   font-weight: normal;
-  color: #f2ede9;
   text-transform: uppercase;
   -webkit-box-shadow: 1px 0px 16px -9px rgba(64, 51, 40, 1);
   -moz-box-shadow: 1px 0px 16px -9px rgba(64, 51, 40, 1);
@@ -15,5 +15,27 @@
   .title {
     font-size: 1.5em;
     letter-spacing: 1px;
+  }
+
+  .add-project {
+    margin-bottom: 0.5em;
+  }
+
+  .button {
+    width: 100%;
+    margin-top: 0.3em;
+    padding: 0.5em;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    outline: inherit;
+    color: inherit;
+    transition: border 0.2s ease-in-out;
+    &:hover {
+      border: 1px solid #f2ede9;
+      border-radius: 5px;
+    }
   }
 }
