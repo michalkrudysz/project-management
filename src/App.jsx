@@ -24,6 +24,7 @@ function App() {
     const newProject = {
       ...projectData,
       id: Math.random(),
+      tasks: [],
     };
 
     setProjectState((prevState) => {
@@ -63,6 +64,45 @@ function App() {
       };
     });
   }
+  function handleAddTaskToProject(projectId, taskDescription) {
+    setProjectState((prevState) => {
+      const updatedProjects = prevState.project.map((project) => {
+        if (project.id === projectId) {
+          return {
+            ...project,
+            tasks: [
+              ...project.tasks,
+              { id: Math.random(), description: taskDescription },
+            ],
+          };
+        }
+        return project;
+      });
+
+      return {
+        ...prevState,
+        project: updatedProjects,
+      };
+    });
+  }
+  function handleDeleteTaskFromProject(projectId, taskId) {
+    setProjectState((prevState) => {
+      const updatedProjects = prevState.project.map((project) => {
+        if (project.id === projectId) {
+          return {
+            ...project,
+            tasks: project.tasks.filter((task) => task.id !== taskId),
+          };
+        }
+        return project;
+      });
+
+      return {
+        ...prevState,
+        project: updatedProjects,
+      };
+    });
+  }
 
   let content;
   if (projectState.selectedProjectId === null) {
@@ -76,7 +116,19 @@ function App() {
       (project) => project.id === projectState.selectedProjectId
     );
     content = (
-      <ShowProject data={project} deleteProject={deleteCurrentProject} />
+      <ShowProject
+        data={project}
+        addTask={(taskDescription) =>
+          handleAddTaskToProject(
+            projectState.selectedProjectId,
+            taskDescription
+          )
+        }
+        deleteTask={(taskId) =>
+          handleDeleteTaskFromProject(projectState.selectedProjectId, taskId)
+        }
+        deleteProject={deleteCurrentProject}
+      />
     );
   }
 

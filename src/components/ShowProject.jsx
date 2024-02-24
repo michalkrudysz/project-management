@@ -1,33 +1,27 @@
 import classes from "./ShowProject.module.scss";
 import Task from "./Task.jsx";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
-export default function ShowProject({ data, deleteProject }) {
-  const [tasks, setTasks] = useState([]);
-  const [error, setError] = useState(false);
-
+export default function ShowProject({
+  data,
+  deleteProject,
+  addTask,
+  deleteTask,
+}) {
   const taskInput = useRef();
+  const errorRef = useRef(false);
 
-  function addTask() {
+  function handleAddTask() {
     const taskValue = taskInput.current.value;
     if (taskValue.trim().length === 0) {
-      setError(true);
+      errorRef.current = true;
       return;
     } else {
-      setError(false);
+      errorRef.current = false;
     }
 
-    setTasks((prevState) => [
-      ...prevState,
-      {
-        description: taskValue,
-        id: Math.random(),
-      },
-    ]);
-  }
-
-  function deleteTask(taskId) {
-    setTasks((prevState) => prevState.filter((task) => task.id !== taskId));
+    addTask(taskValue);
+    taskInput.current.value = "";
   }
 
   return (
@@ -43,30 +37,31 @@ export default function ShowProject({ data, deleteProject }) {
           onClick={() => deleteProject(data.id)}
           className={classes.button}
         >
-          Usuń
+          Usuń projekt
         </button>
       </div>
 
       <div className={classes.tasks}>
         <h3 className={classes.task}>Zadania</h3>
-        <button onClick={addTask} className={classes.add}>
+        <button onClick={handleAddTask} className={classes.add}>
           Dodaj zadanie
         </button>
-        {error ? (
+        {errorRef.current ? (
           <p className={classes.error}>Musisz wprowadzić zadanie</p>
         ) : null}
         <div className={classes["add-task"]}>
           <input type="text" ref={taskInput} />
         </div>
         <ul>
-          {tasks.map((task) => (
-            <Task
-              key={task.id}
-              id={task.id}
-              description={task.description}
-              deleteTask={deleteTask}
-            />
-          ))}
+          {data.tasks &&
+            data.tasks.map((task) => (
+              <Task
+                key={task.id}
+                id={task.id}
+                description={task.description}
+                deleteTask={() => deleteTask(task.id)}
+              />
+            ))}
         </ul>
       </div>
     </div>
